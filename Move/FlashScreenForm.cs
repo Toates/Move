@@ -38,12 +38,6 @@ namespace Move
         private void FlashScreenFormTimer_Tick(object sender, EventArgs e)
         {
             BackColor = Color.FromArgb(r.Next(0, 256), r.Next(0, 256), r.Next(0, 256));
-            //TransparencyKey = BackColor;
-        }
-
-        private void FlashScreenForm_MouseMove(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

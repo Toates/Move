@@ -61,6 +61,114 @@ namespace Move.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string CloseMenuItem_Text {
+            get {
+                return ResourceManager.GetString("CloseMenuItem_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closes the application.
+        /// </summary>
+        internal static string CloseMenuItem_ToolTipText {
+            get {
+                return ResourceManager.GetString("CloseMenuItem_ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balloon ToolTip.
+        /// </summary>
+        internal static string EnableBalloonToolTip_Text {
+            get {
+                return ResourceManager.GetString("EnableBalloonToolTip_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the timer expires, a tooltip will appear for a short period and will reset the timer itself on closure.
+        /// </summary>
+        internal static string EnableBalloonToolTip_TooltipText {
+            get {
+                return ResourceManager.GetString("EnableBalloonToolTip_TooltipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flash Icon.
+        /// </summary>
+        internal static string EnableFlashIcon_Text {
+            get {
+                return ResourceManager.GetString("EnableFlashIcon_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the timer expires, the taskbar icon will flash until reset.
+        /// </summary>
+        internal static string EnableFlashIcon_ToolTipText {
+            get {
+                return ResourceManager.GetString("EnableFlashIcon_ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock Machine.
+        /// </summary>
+        internal static string EnableMachineLock_Text {
+            get {
+                return ResourceManager.GetString("EnableMachineLock_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the timer expires, the machine will be locked and require unlocking.
+        /// </summary>
+        internal static string EnableMachineLock_ToolTipText {
+            get {
+                return ResourceManager.GetString("EnableMachineLock_ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flash Screen.
+        /// </summary>
+        internal static string EnableScreenFlash_Text {
+            get {
+                return ResourceManager.GetString("EnableScreenFlash_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the timer expires, the screen will flash until reset.
+        /// </summary>
+        internal static string EnableScreenFlash_ToolTipText {
+            get {
+                return ResourceManager.GetString("EnableScreenFlash_ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System Beep.
+        /// </summary>
+        internal static string EnableSystemBeep_Text {
+            get {
+                return ResourceManager.GetString("EnableSystemBeep_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the timer expires, a sound will be output until reset.
+        /// </summary>
+        internal static string EnableSystemBeep_ToolTipText {
+            get {
+                return ResourceManager.GetString("EnableSystemBeep_ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Icon {
@@ -97,6 +205,42 @@ namespace Move.Properties {
             get {
                 object obj = ResourceManager.GetObject("NoIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string ResetMenuItem_Text {
+            get {
+                return ResourceManager.GetString("ResetMenuItem_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resets the timer to the specified interval.
+        /// </summary>
+        internal static string ResetMenuItem_ToolTipText {
+            get {
+                return ResourceManager.GetString("ResetMenuItem_ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string SettingsMenuItem_Text {
+            get {
+                return ResourceManager.GetString("SettingsMenuItem_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sets the timer interval.
+        /// </summary>
+        internal static string TimerInterval_ToolTipText {
+            get {
+                return ResourceManager.GetString("TimerInterval_ToolTipText", resourceCulture);
             }
         }
     }

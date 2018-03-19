@@ -57,7 +57,6 @@
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FlashScreenForm_FormClosed);
             this.Load += new System.EventHandler(this.FlashScreenForm_Load);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FlashScreenForm_MouseMove);
             this.ResumeLayout(false);
 
         }

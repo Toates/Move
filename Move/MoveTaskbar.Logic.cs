@@ -13,6 +13,7 @@ namespace Move
         {
             // pinvoke for locking the workstation
             [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+            [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
             internal static extern bool LockWorkStation();
         }
 
@@ -23,13 +24,10 @@ namespace Move
 
         // move timer not able to return current status so stopwatch used to display the time until expiry
         private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-
-        private Boolean SwitchIcon = true;
-
+        
         void MoveTimer_Tick(object sender, EventArgs e)
         {
-            //this.TrayIconContextMenu.Enabled = false;
-            this.TrayIconContextMenu.Close();
+            TrayIconContextMenu.Close();
             StopMoveTimer();
             StartActions();
         }
@@ -37,11 +35,7 @@ namespace Move
         void StartMoveTimer()
         {
             MoveTimer.Stop();
-            //#if DEBUG
-            //            MoveTimer.Interval = 10000;
-            //#else
             MoveTimer.Interval = (int)TimeSpan.FromMinutes(Properties.Settings.Default.IntervalMinutes).TotalMilliseconds;
-//#endif
 
             MoveTimer.Enabled = true;
             MoveTimer.Start();
@@ -59,10 +53,8 @@ namespace Move
         
         void StartActions()
         {
-            // enable eventhandler for each action here so any action can trigger acceptance
-            //ActionManager.StartActions();
-
             bool MachineLocked = false;
+            
             //LockMachine
             if (Properties.Settings.Default.LockMachineEnabled)
             {
@@ -74,7 +66,7 @@ namespace Move
                 //TaskbarIconFlash
                 if (Properties.Settings.Default.FlashIconEnabled)
                 {
-                    TaskbarIconFlashTimer.Interval = 100;
+                    TaskbarIconFlashTimer.Interval = 1000; // TODO: done for warning, could suppress
                     TaskbarIconFlashTimer.Start();
                 }
 
@@ -104,7 +96,7 @@ namespace Move
                     // or we do not react to closure, leaving the user to have to double click to stop
                     // based on the two options, stopping on closure is the least worse, just need to make clear in settings and allow disabling
                     // also single click on icon is treated as a click on the balloontip when displayed for some reason
-                    this.TrayIcon.ShowBalloonTip(60000, "", "Time to move!", ToolTipIcon.None); // TODO: add string to settings
+                    TrayIcon.ShowBalloonTip(60000, "", "Time to move!", ToolTipIcon.None); // TODO: add string to settings
                 }
 
                 //FlashScreen
@@ -126,7 +118,7 @@ namespace Move
             if (Properties.Settings.Default.FlashIconEnabled)
             {
                 TaskbarIconFlashTimer.Stop();
-                this.TrayIcon.Icon = Properties.Resources.Icon;
+                TrayIcon.Icon = Properties.Resources.Icon;
             }
 
             //SystemBeep
@@ -143,7 +135,8 @@ namespace Move
             //BalloonTip
             if (Properties.Settings.Default.BalloonTipEnabled)
             {
-                this.TrayIcon.Visible = true; // this will force the tooltip to close
+                // this forces the BalloonTip to close
+                TrayIcon.Visible = true;
             }
 
             //FlashScreen
@@ -152,10 +145,9 @@ namespace Move
                 FlashScreen.Close();
             }
 
-            //LockMachine - nothing required as if this was enabled, the machine would have been locked
-            //if (Properties.Settings.Default.LockMachineEnabled)
-            //{
-            //}
+            //LockMachine 
+            // - nothing to disable as if this was enabled, 
+            //   the machine would have been locked
         }
         
         void Action_Accepted(object sender, EventArgs e)
@@ -164,15 +156,16 @@ namespace Move
             StartMoveTimer();
         }
 
+        private Boolean SwitchIcon = true;
         void TaskbarIconFlashTimer_Tick(object sender, EventArgs e)
         {
             if (SwitchIcon)
             {
-                this.TrayIcon.Icon = Properties.Resources.NoIcon;
+                TrayIcon.Icon = Properties.Resources.NoIcon;
             }
             else
             {
-                this.TrayIcon.Icon = Properties.Resources.Icon;
+                TrayIcon.Icon = Properties.Resources.Icon;
             }
 
             SwitchIcon = !SwitchIcon;
@@ -183,7 +176,6 @@ namespace Move
             System.Media.SystemSounds.Beep.Play();
         }
 
-        // handler for screen lock/unlock
         void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
         {
             switch (e.Reason)
@@ -193,7 +185,6 @@ namespace Move
                     StopMoveTimer();
                     break;
                 case Microsoft.Win32.SessionSwitchReason.SessionUnlock:
-                    // when the screen is unlocked, restart all the timers from new
                     StartMoveTimer();
                     break;
                 default:

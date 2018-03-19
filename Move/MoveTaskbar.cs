@@ -12,6 +12,7 @@ using System.ComponentModel;
 //- disable until xxx
 //- personalised alerts
 
+[assembly: CLSCompliant(true)]
 namespace Move
 {
     partial class MoveTaskbar : ApplicationContext
@@ -45,7 +46,7 @@ namespace Move
             Properties.Settings.Default.Reload();
 
             // setup application event handlers
-            Application.ApplicationExit += new EventHandler(this.Application_Exit);
+            Application.ApplicationExit += new EventHandler(Application_Exit);
 
             FlashScreen = new FlashScreenForm();
 
@@ -53,7 +54,7 @@ namespace Move
             Microsoft.Win32.SystemEvents.SessionSwitch += new Microsoft.Win32.SessionSwitchEventHandler(SystemEvents_SessionSwitch);
 
             // taskbar icon
-            this.TrayIcon = new NotifyIcon()
+            TrayIcon = new NotifyIcon()
             {
                 Text = "",
                 Icon = Properties.Resources.Icon,
@@ -61,82 +62,77 @@ namespace Move
             };
 
             // event handlers
-            this.TrayIcon.DoubleClick += new EventHandler(TrayIcon_DoubleClick);
-            //this.TrayIcon.Click += new EventHandler(TrayIcon_Click);
-            this.TrayIcon.MouseMove += new MouseEventHandler(TrayIcon_MouseMove);
+            TrayIcon.DoubleClick += new EventHandler(TrayIcon_DoubleClick);
+            TrayIcon.MouseMove += new MouseEventHandler(TrayIcon_MouseMove);
             MoveTimer.Tick += new EventHandler(MoveTimer_Tick);
             TaskbarIconFlashTimer.Tick += new EventHandler(TaskbarIconFlashTimer_Tick);
             SystemBeepTimer.Tick += new EventHandler(SystemBeepTimer_Tick);
-            this.TrayIcon.BalloonTipClicked += new EventHandler(TrayIcon_BalloonTipClicked);
-            this.TrayIcon.BalloonTipClosed += new EventHandler(TrayIcon_BalloonTipClosed);
+            TrayIcon.BalloonTipClicked += new EventHandler(TrayIcon_BalloonTipClicked);
+            TrayIcon.BalloonTipClosed += new EventHandler(TrayIcon_BalloonTipClosed);
 
             // tray icon context menu
-            this.TrayIconContextMenu = new ContextMenuStrip();
-            this.TrayIconContextMenu.SuspendLayout();
+            TrayIconContextMenu = new ContextMenuStrip();
+            TrayIconContextMenu.SuspendLayout();
 
-            this.TimerInterval = new ToolStripComboBox();
-            this.ResetMenuItem = new ToolStripMenuItem();
-            this.SettingsMenuItem = new ToolStripMenuItem();
-            this.EnableFlashIcon = new ToolStripMenuItem();
-            this.EnableSystemBeep = new ToolStripMenuItem();
+            TimerInterval = new ToolStripComboBox();
+            ResetMenuItem = new ToolStripMenuItem();
+            SettingsMenuItem = new ToolStripMenuItem();
+            EnableFlashIcon = new ToolStripMenuItem();
+            EnableSystemBeep = new ToolStripMenuItem();
             //this.EnableMessageBox = new ToolStripMenuItem();
-            this.EnableBalloonToolTip = new ToolStripMenuItem();
-            this.EnableScreenFlash = new ToolStripMenuItem();
-            this.EnableMachineLock = new ToolStripMenuItem();
-            this.CloseMenuItem = new ToolStripMenuItem();
-            this.TrayIconContextMenu.Items.AddRange(new ToolStripItem[] {
-                this.ResetMenuItem,
-                this.SettingsMenuItem,
-                this.CloseMenuItem
+            EnableBalloonToolTip = new ToolStripMenuItem();
+            EnableScreenFlash = new ToolStripMenuItem();
+            EnableMachineLock = new ToolStripMenuItem();
+            CloseMenuItem = new ToolStripMenuItem();
+            TrayIconContextMenu.Items.AddRange(new ToolStripItem[] {
+                ResetMenuItem,
+                SettingsMenuItem,
+                CloseMenuItem
             });
 
-            this.ResetMenuItem.Text = "Reset";
-            this.ResetMenuItem.ToolTipText = "Resets the timer to the specified interval";
-            this.ResetMenuItem.Click += new EventHandler(ResetMenuItem_Click);
+            ResetMenuItem.Text = Properties.Resources.ResetMenuItem_Text;
+            ResetMenuItem.ToolTipText = Properties.Resources.ResetMenuItem_ToolTipText;
+            ResetMenuItem.Click += new EventHandler(ResetMenuItem_Click);
 
-            this.SettingsMenuItem.Text = "Settings";
-            this.SettingsMenuItem.DropDown.Closing += new ToolStripDropDownClosingEventHandler(SettingsMenuItem_Closing);
-            this.SettingsMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            SettingsMenuItem.Text = Properties.Resources.SettingsMenuItem_Text;
+            SettingsMenuItem.DropDown.Closing += new ToolStripDropDownClosingEventHandler(SettingsMenuItem_Closing);
+            SettingsMenuItem.DropDownItems.AddRange(new ToolStripItem[]
             {
-                this.TimerInterval,
-                this.EnableFlashIcon,
-                this.EnableSystemBeep,
+                TimerInterval,
+                EnableFlashIcon,
+                EnableSystemBeep,
                 //this.EnableMessageBox,
-                this.EnableBalloonToolTip,
-                this.EnableScreenFlash,
-                this.EnableMachineLock
+                EnableBalloonToolTip,
+                EnableScreenFlash,
+                EnableMachineLock
             });
-            
-            this.TimerInterval.ToolTipText = "Sets the timer interval";
-            this.TimerInterval.Items.AddRange(new object[] {
+
+            TimerInterval.ToolTipText = Properties.Resources.TimerInterval_ToolTipText;
+            TimerInterval.Items.AddRange(new object[] {
                 1,2,3,4,5,6,7,8,9,10,
                 11,12,13,14,15,16,17,18,19,20,
                 21,22,23,24,25,26,27,28,29,30,
                 31,32,33,34,35,36,37,38,39,40,
                 41,42,43,44,45,46,47,48,49,50,
                 51,52,53,54,55,56,57,58,59,60,
-                61,62,63,64,65,66,67,68,69,70,
-                71,72,73,74,75,76,77,78,79,80,
-                81,82,83,84,85,86,87,88,89,90,
-                91,92,93,94,95,96,97,98,99,100,
-
             });
-            this.TimerInterval.SelectedItem = Properties.Settings.Default.IntervalMinutes;
-            this.TimerInterval.SelectedText = Properties.Settings.Default.IntervalMinutes.ToString();
-            this.TimerInterval.Text = Properties.Settings.Default.IntervalMinutes.ToString();
-            this.TimerInterval.SelectedIndexChanged += new EventHandler(TimerInterval_SelectedIndexChanged);
+            //TODO: not all needed
+            TimerInterval.SelectedItem = Properties.Settings.Default.IntervalMinutes;
+            TimerInterval.SelectedText = Properties.Settings.Default.IntervalMinutes.ToString(System.Globalization.CultureInfo.CurrentCulture);
+            TimerInterval.Text = Properties.Settings.Default.IntervalMinutes.ToString(System.Globalization.CultureInfo.CurrentCulture);
+            TimerInterval.SelectedIndexChanged += new EventHandler(TimerInterval_SelectedIndexChanged);
 
-            this.EnableFlashIcon.Text = "Flash Icon";
-            this.EnableFlashIcon.ToolTipText = "When the timer expires, the taskbar icon will flash until reset";
-            this.EnableFlashIcon.CheckOnClick = true;
-            this.EnableFlashIcon.Click += new EventHandler(EnableFlashIcon_Click);
-            this.EnableFlashIcon.Checked = Properties.Settings.Default.FlashIconEnabled;
+            EnableFlashIcon.Text = Properties.Resources.EnableFlashIcon_Text;
+            EnableFlashIcon.ToolTipText = Properties.Resources.EnableFlashIcon_ToolTipText;
+            EnableFlashIcon.CheckOnClick = true;
+            EnableFlashIcon.Click += new EventHandler(EnableFlashIcon_Click);
+            EnableFlashIcon.Checked = Properties.Settings.Default.FlashIconEnabled;
 
-            this.EnableSystemBeep.Text = "System Beep";
-            this.EnableSystemBeep.ToolTipText = "When the timer expires, a sound will be output until reset";
-            this.EnableSystemBeep.CheckOnClick = true;
-            this.EnableSystemBeep.Click += new EventHandler(EnableSystemBeep_Click);
-            this.EnableSystemBeep.Checked = Properties.Settings.Default.SystemBeepEnabled;
+            EnableSystemBeep.Text = Properties.Resources.EnableSystemBeep_Text;
+            EnableSystemBeep.ToolTipText = Properties.Resources.EnableSystemBeep_ToolTipText;
+            EnableSystemBeep.CheckOnClick = true;
+            EnableSystemBeep.Click += new EventHandler(EnableSystemBeep_Click);
+            EnableSystemBeep.Checked = Properties.Settings.Default.SystemBeepEnabled;
 
             //this.EnableMessageBox.Text = "Message Box";
             //this.EnableMessageBox.ToolTipText = "";
@@ -144,31 +140,31 @@ namespace Move
             //this.EnableMessageBox.Click += new EventHandler(EnableMessageBox_Click);
             //this.EnableMessageBox.Checked = Properties.Settings.Default.MessageBoxEnabled;
 
-            this.EnableBalloonToolTip.Text = "Balloon ToolTip";
-            this.EnableBalloonToolTip.ToolTipText = "When the timer expires, a tooltip will appear for a short period and will reset the timer itself on closure";
-            this.EnableBalloonToolTip.CheckOnClick = true;
-            this.EnableBalloonToolTip.Click += new EventHandler(EnableBalloonToolTip_Click);
-            this.EnableBalloonToolTip.Checked = Properties.Settings.Default.BalloonTipEnabled;
+            EnableBalloonToolTip.Text = Properties.Resources.EnableMachineLock_Text;
+            EnableBalloonToolTip.ToolTipText = Properties.Resources.EnableMachineLock_ToolTipText;
+            EnableBalloonToolTip.CheckOnClick = true;
+            EnableBalloonToolTip.Click += new EventHandler(EnableBalloonToolTip_Click);
+            EnableBalloonToolTip.Checked = Properties.Settings.Default.BalloonTipEnabled;
 
-            this.EnableScreenFlash.Text = "Flash Screen";
-            this.EnableScreenFlash.ToolTipText = "When the timer expires, the screen will flash until reset";
-            this.EnableScreenFlash.CheckOnClick = true;
-            this.EnableScreenFlash.Click += new EventHandler(EnableScreenFlash_Click);
-            this.EnableScreenFlash.Checked = Properties.Settings.Default.FlashScreenEnabled;
+            EnableScreenFlash.Text = Properties.Resources.EnableScreenFlash_Text;
+            EnableScreenFlash.ToolTipText = Properties.Resources.EnableScreenFlash_ToolTipText;
+            EnableScreenFlash.CheckOnClick = true;
+            EnableScreenFlash.Click += new EventHandler(EnableScreenFlash_Click);
+            EnableScreenFlash.Checked = Properties.Settings.Default.FlashScreenEnabled;
 
-            this.EnableMachineLock.Text = "Lock Machine";
-            this.EnableMachineLock.ToolTipText = "When the timer expires, the machine will be locked and require unlocking";
-            this.EnableMachineLock.CheckOnClick = true;
-            this.EnableMachineLock.Click += new EventHandler(EnableMachineLock_Click);
-            this.EnableMachineLock.Checked = Properties.Settings.Default.LockMachineEnabled;
+            EnableMachineLock.Text = Properties.Resources.EnableMachineLock_Text;
+            EnableMachineLock.ToolTipText = Properties.Resources.EnableMachineLock_ToolTipText;
+            EnableMachineLock.CheckOnClick = true;
+            EnableMachineLock.Click += new EventHandler(EnableMachineLock_Click);
+            EnableMachineLock.Checked = Properties.Settings.Default.LockMachineEnabled;
 
-            this.CloseMenuItem.Text = "Close";
-            this.CloseMenuItem.ToolTipText = "Closes the application";
-            this.CloseMenuItem.Click += new EventHandler(this.CloseMenuItem_Click);
+            CloseMenuItem.Text = Properties.Resources.CloseMenuItem_Text;
+            CloseMenuItem.ToolTipText = Properties.Resources.CloseMenuItem_ToolTipText;
+            CloseMenuItem.Click += new EventHandler(CloseMenuItem_Click);
 
-            this.TrayIcon.ContextMenuStrip = TrayIconContextMenu;
+            TrayIcon.ContextMenuStrip = TrayIconContextMenu;
 
-            this.TrayIconContextMenu.ResumeLayout();
+            TrayIconContextMenu.ResumeLayout();
         }
         
         private void TrayIcon_DoubleClick(object sender, EventArgs e)
@@ -176,23 +172,19 @@ namespace Move
             Action_Accepted(sender, e);
         }
 
-        //private void TrayIcon_Click(object sender, EventArgs e)
-        //{
-        //}
-
         private void TrayIcon_MouseMove(object sender, EventArgs e)
         {
             // only display the time left if it is valid to do so
             if (MoveTimer.Interval >= stopwatch.ElapsedMilliseconds)
             {
-                this.TrayIcon.Text = 
+                TrayIcon.Text = 
                     TimeSpan.FromMilliseconds
-                    (MoveTimer.Interval - stopwatch.ElapsedMilliseconds).ToString(@"hh\:mm\:ss");
+                    (MoveTimer.Interval - stopwatch.ElapsedMilliseconds).ToString(@"hh\:mm\:ss", System.Globalization.CultureInfo.CurrentCulture);
             }
-            // otherwise just display nothing TODO: or could display a different message
+            // otherwise just display nothing
             else
             {
-                this.TrayIcon.Text = "";
+                TrayIcon.Text = "";
             }
         }
 
@@ -208,7 +200,6 @@ namespace Move
 
         private void ResetMenuItem_Click(object sender, EventArgs e)
         {
-            //this.TrayIconContextMenu.Close();
             Action_Accepted(sender, e);
         }
 
@@ -219,14 +210,10 @@ namespace Move
                 e.Cancel = true;
             }
         }
-
-        //private void SettingsMenuItem_Click(object sender, EventArgs e)
-        //{
-        //}
-
+        
         private void TimerInterval_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.IntervalMinutes = (int)this.TimerInterval.SelectedItem;
+            Properties.Settings.Default.IntervalMinutes = (int)TimerInterval.SelectedItem;
             Properties.Settings.Default.Save();
 
             StartMoveTimer();
@@ -234,13 +221,13 @@ namespace Move
 
         private void EnableFlashIcon_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.FlashIconEnabled = this.EnableFlashIcon.Checked;
+            Properties.Settings.Default.FlashIconEnabled = EnableFlashIcon.Checked;
             Properties.Settings.Default.Save();
         }
 
         private void EnableSystemBeep_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.SystemBeepEnabled = this.EnableSystemBeep.Checked;
+            Properties.Settings.Default.SystemBeepEnabled = EnableSystemBeep.Checked;
             Properties.Settings.Default.Save();
         }
 
@@ -259,7 +246,7 @@ namespace Move
 
         private void EnableBalloonToolTip_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.BalloonTipEnabled = this.EnableBalloonToolTip.Checked;
+            Properties.Settings.Default.BalloonTipEnabled = EnableBalloonToolTip.Checked;
 
             //if (this.EnableBalloonToolTip.Checked)
             //{
@@ -271,12 +258,13 @@ namespace Move
         }
         private void EnableScreenFlash_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.FlashScreenEnabled = this.EnableScreenFlash.Checked;
+            Properties.Settings.Default.FlashScreenEnabled = EnableScreenFlash.Checked;
             Properties.Settings.Default.Save();
         }
+
         private void EnableMachineLock_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.LockMachineEnabled = this.EnableMachineLock.Checked;
+            Properties.Settings.Default.LockMachineEnabled = EnableMachineLock.Checked;
             Properties.Settings.Default.Save();
         }
 
@@ -287,7 +275,6 @@ namespace Move
 
         private void Application_Exit(object sender, EventArgs e)
         {
-            // store all user settings for next startup
             Properties.Settings.Default.Save();
 
             // ensure the icon is be removed when the application is closed

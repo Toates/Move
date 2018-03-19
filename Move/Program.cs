@@ -16,7 +16,10 @@ namespace Move
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MoveTaskbar());
+            using (MoveTaskbar moveTaskbar = new MoveTaskbar())
+            {
+                Application.Run(moveTaskbar);
+            }
         }
     }
 }
