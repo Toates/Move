@@ -66,7 +66,7 @@ namespace Move
                 //TaskbarIconFlash
                 if (Properties.Settings.Default.FlashIconEnabled)
                 {
-                    TaskbarIconFlashTimer.Interval = 1000; // TODO: done for warning, could suppress
+                    //TaskbarIconFlashTimer.Interval = 100;
                     TaskbarIconFlashTimer.Start();
                 }
 

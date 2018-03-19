@@ -140,8 +140,8 @@ namespace Move
             //this.EnableMessageBox.Click += new EventHandler(EnableMessageBox_Click);
             //this.EnableMessageBox.Checked = Properties.Settings.Default.MessageBoxEnabled;
 
-            EnableBalloonToolTip.Text = Properties.Resources.EnableMachineLock_Text;
-            EnableBalloonToolTip.ToolTipText = Properties.Resources.EnableMachineLock_ToolTipText;
+            EnableBalloonToolTip.Text = Properties.Resources.EnableBalloonToolTip_Text;
+            EnableBalloonToolTip.ToolTipText = Properties.Resources.EnableBalloonToolTip_TooltipText;
             EnableBalloonToolTip.CheckOnClick = true;
             EnableBalloonToolTip.Click += new EventHandler(EnableBalloonToolTip_Click);
             EnableBalloonToolTip.Checked = Properties.Settings.Default.BalloonTipEnabled;
