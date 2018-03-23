@@ -35,6 +35,7 @@
             // FlashScreenFormTimer
             // 
             this.FlashScreenFormTimer.Enabled = true;
+            this.FlashScreenFormTimer.Interval = global::Move.Properties.Settings.Default.ActionFlashScreenSpeed;
             this.FlashScreenFormTimer.Tick += new System.EventHandler(this.FlashScreenFormTimer_Tick);
             // 
             // FlashScreenForm
@@ -45,12 +46,12 @@
             this.ClientSize = new System.Drawing.Size(100, 100);
             this.ControlBox = false;
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Opacity", global::Move.Properties.Settings.Default, "dxghfgh", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FlashScreenForm";
-            this.Opacity = 0.5D;
+            this.Opacity = global::Move.Properties.Settings.Default.ActionFlashScreenTransparency;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

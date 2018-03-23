@@ -2,29 +2,35 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Move.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="IntervalMinutes" Type="System.Int32" Scope="User">
+    <Setting Name="MoveIntervalMinutes" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
-    <Setting Name="FlashIconEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="ActionFlashIconEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="SystemBeepEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="ActionSystemBeepEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="MessageBoxEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="ActionMessageBoxEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="BalloonTipEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="ActionBalloonTipEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="FlashScreenEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="ActionFlashScreenEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="LockMachineEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="ActionLockMachineEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Icon" Type="System.Drawing.Icon" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="ActionFlashIconSpeed" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="ActionFlashScreenSpeed" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="ActionFlashScreenTransparency" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -181,9 +181,9 @@ namespace Move.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Icon_Alt {
+        internal static System.Drawing.Icon IconBlank {
             get {
-                object obj = ResourceManager.GetObject("Icon_Alt", resourceCulture);
+                object obj = ResourceManager.GetObject("IconBlank", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -191,20 +191,37 @@ namespace Move.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Icon_Alt_2 {
+        internal static System.Drawing.Icon IconPaused {
             get {
-                object obj = ResourceManager.GetObject("Icon_Alt_2", resourceCulture);
+                object obj = ResourceManager.GetObject("IconPaused", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized string similar to Pause.
         /// </summary>
-        internal static System.Drawing.Icon NoIcon {
+        internal static string PauseMenuItem_TextPause {
             get {
-                object obj = ResourceManager.GetObject("NoIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ResourceManager.GetString("PauseMenuItem_TextPause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume.
+        /// </summary>
+        internal static string PauseMenuItem_TextResume {
+            get {
+                return ResourceManager.GetString("PauseMenuItem_TextResume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pauses the timer to the specified interval.
+        /// </summary>
+        internal static string PauseMenuItem_ToolTipText {
+            get {
+                return ResourceManager.GetString("PauseMenuItem_ToolTipText", resourceCulture);
             }
         }
         
@@ -232,6 +249,15 @@ namespace Move.Properties {
         internal static string SettingsMenuItem_Text {
             get {
                 return ResourceManager.GetString("SettingsMenuItem_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens the settings dialog to allow behaviour customization.
+        /// </summary>
+        internal static string SettingsMenuItem_ToolTipText {
+            get {
+                return ResourceManager.GetString("SettingsMenuItem_ToolTipText", resourceCulture);
             }
         }
         

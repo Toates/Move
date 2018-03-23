@@ -117,74 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CloseMenuItem_Text" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="CloseMenuItem_ToolTipText" xml:space="preserve">
-    <value>Closes the application</value>
-  </data>
-  <data name="EnableBalloonToolTip_Text" xml:space="preserve">
-    <value>Balloon ToolTip</value>
-  </data>
-  <data name="EnableBalloonToolTip_TooltipText" xml:space="preserve">
-    <value>When the timer expires, a tooltip will appear for a short period and will reset the timer itself on closure</value>
-  </data>
-  <data name="EnableFlashIcon_Text" xml:space="preserve">
-    <value>Flash Icon</value>
-  </data>
-  <data name="EnableFlashIcon_ToolTipText" xml:space="preserve">
-    <value>When the timer expires, the taskbar icon will flash until reset</value>
-  </data>
-  <data name="EnableMachineLock_Text" xml:space="preserve">
-    <value>Lock Machine</value>
-  </data>
-  <data name="EnableMachineLock_ToolTipText" xml:space="preserve">
-    <value>When the timer expires, the machine will be locked and require unlocking</value>
-  </data>
-  <data name="EnableScreenFlash_Text" xml:space="preserve">
-    <value>Flash Screen</value>
-  </data>
-  <data name="EnableScreenFlash_ToolTipText" xml:space="preserve">
-    <value>When the timer expires, the screen will flash until reset</value>
-  </data>
-  <data name="EnableSystemBeep_Text" xml:space="preserve">
-    <value>System Beep</value>
-  </data>
-  <data name="EnableSystemBeep_ToolTipText" xml:space="preserve">
-    <value>When the timer expires, a sound will be output until reset</value>
-  </data>
-  <data name="ResetMenuItem_Text" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="ResetMenuItem_ToolTipText" xml:space="preserve">
-    <value>Resets the timer to the specified interval</value>
-  </data>
-  <data name="SettingsMenuItem_Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="TimerInterval_ToolTipText" xml:space="preserve">
-    <value>Sets the timer interval</value>
-  </data>
-  <data name="IconBlank" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconBlank.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconPaused" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconPaused.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PauseMenuItem_TextPause" xml:space="preserve">
-    <value>Pause</value>
-  </data>
-  <data name="PauseMenuItem_TextResume" xml:space="preserve">
-    <value>Resume</value>
-  </data>
-  <data name="PauseMenuItem_ToolTipText" xml:space="preserve">
-    <value>Pauses the timer to the specified interval</value>
-  </data>
-  <data name="SettingsMenuItem_ToolTipText" xml:space="preserve">
-    <value>Opens the settings dialog to allow behaviour customization</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
 </root>

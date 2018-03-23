@@ -26,95 +26,120 @@ namespace Move.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("30")]
-        public int IntervalMinutes {
+        public int MoveIntervalMinutes {
             get {
-                return ((int)(this["IntervalMinutes"]));
+                return ((int)(this["MoveIntervalMinutes"]));
             }
             set {
-                this["IntervalMinutes"] = value;
+                this["MoveIntervalMinutes"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FlashIconEnabled {
+        public bool ActionFlashIconEnabled {
             get {
-                return ((bool)(this["FlashIconEnabled"]));
+                return ((bool)(this["ActionFlashIconEnabled"]));
             }
             set {
-                this["FlashIconEnabled"] = value;
+                this["ActionFlashIconEnabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SystemBeepEnabled {
+        public bool ActionSystemBeepEnabled {
             get {
-                return ((bool)(this["SystemBeepEnabled"]));
+                return ((bool)(this["ActionSystemBeepEnabled"]));
             }
             set {
-                this["SystemBeepEnabled"] = value;
+                this["ActionSystemBeepEnabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool MessageBoxEnabled {
+        public bool ActionMessageBoxEnabled {
             get {
-                return ((bool)(this["MessageBoxEnabled"]));
+                return ((bool)(this["ActionMessageBoxEnabled"]));
             }
             set {
-                this["MessageBoxEnabled"] = value;
+                this["ActionMessageBoxEnabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool BalloonTipEnabled {
+        public bool ActionBalloonTipEnabled {
             get {
-                return ((bool)(this["BalloonTipEnabled"]));
+                return ((bool)(this["ActionBalloonTipEnabled"]));
             }
             set {
-                this["BalloonTipEnabled"] = value;
+                this["ActionBalloonTipEnabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FlashScreenEnabled {
+        public bool ActionFlashScreenEnabled {
             get {
-                return ((bool)(this["FlashScreenEnabled"]));
+                return ((bool)(this["ActionFlashScreenEnabled"]));
             }
             set {
-                this["FlashScreenEnabled"] = value;
+                this["ActionFlashScreenEnabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool LockMachineEnabled {
+        public bool ActionLockMachineEnabled {
             get {
-                return ((bool)(this["LockMachineEnabled"]));
+                return ((bool)(this["ActionLockMachineEnabled"]));
             }
             set {
-                this["LockMachineEnabled"] = value;
+                this["ActionLockMachineEnabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Icon Icon {
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int ActionFlashIconSpeed {
             get {
-                return ((global::System.Drawing.Icon)(this["Icon"]));
+                return ((int)(this["ActionFlashIconSpeed"]));
             }
             set {
-                this["Icon"] = value;
+                this["ActionFlashIconSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int ActionFlashScreenSpeed {
+            get {
+                return ((int)(this["ActionFlashScreenSpeed"]));
+            }
+            set {
+                this["ActionFlashScreenSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double ActionFlashScreenTransparency {
+            get {
+                return ((double)(this["ActionFlashScreenTransparency"]));
+            }
+            set {
+                this["ActionFlashScreenTransparency"] = value;
             }
         }
     }

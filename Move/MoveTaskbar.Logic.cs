@@ -28,6 +28,7 @@ namespace Move
         void MoveTimer_Tick(object sender, EventArgs e)
         {
             TrayIconContextMenu.Close();
+            PauseMenuItem.Enabled = false;
             StopMoveTimer();
             StartActions();
         }
@@ -35,7 +36,7 @@ namespace Move
         void StartMoveTimer()
         {
             MoveTimer.Stop();
-            MoveTimer.Interval = (int)TimeSpan.FromMinutes(Properties.Settings.Default.IntervalMinutes).TotalMilliseconds;
+            MoveTimer.Interval = (int)TimeSpan.FromMinutes(Properties.Settings.Default.MoveIntervalMinutes).TotalMilliseconds;
 
             MoveTimer.Enabled = true;
             MoveTimer.Start();
@@ -56,7 +57,7 @@ namespace Move
             bool MachineLocked = false;
             
             //LockMachine
-            if (Properties.Settings.Default.LockMachineEnabled)
+            if (Properties.Settings.Default.ActionLockMachineEnabled)
             {
                 MachineLocked = NativeMethods.LockWorkStation();
             }
@@ -64,31 +65,21 @@ namespace Move
             if (!MachineLocked)
             {
                 //TaskbarIconFlash
-                if (Properties.Settings.Default.FlashIconEnabled)
+                if (Properties.Settings.Default.ActionFlashIconEnabled)
                 {
-                    //TaskbarIconFlashTimer.Interval = 100;
+                    TaskbarIconFlashTimer.Interval = Properties.Settings.Default.ActionFlashIconSpeed;
                     TaskbarIconFlashTimer.Start();
                 }
 
                 //SystemBeep
-                if (Properties.Settings.Default.SystemBeepEnabled)
+                if (Properties.Settings.Default.ActionSystemBeepEnabled)
                 {
                     SystemBeepTimer.Interval = 2000;
                     SystemBeepTimer.Start();
                 }
-
-                //MessageBox
-                if (Properties.Settings.Default.MessageBoxEnabled)
-                {
-                    // not a clean way to close the messagebox if user stops action thru another route
-                    // also seems to conflict with balloontip
-                    // TODO: need to user a basic dialog window or overload messagebox?
-                    // MessageBox.Show("Time to move!"); // TODO: add string and timeout to settings
-                    // Form.ShowDialog // we are not a form here so probably cannot use this
-                }
-
+                
                 //BalloonTip 
-                if (Properties.Settings.Default.BalloonTipEnabled)
+                if (Properties.Settings.Default.ActionBalloonTipEnabled)
                 {
                     // does not use the timeout value given and will close itself after ~5 seconds
                     // balloontipclosed is triggered on both user and system closures with no way of differentiating 
@@ -96,11 +87,11 @@ namespace Move
                     // or we do not react to closure, leaving the user to have to double click to stop
                     // based on the two options, stopping on closure is the least worse, just need to make clear in settings and allow disabling
                     // also single click on icon is treated as a click on the balloontip when displayed for some reason
-                    TrayIcon.ShowBalloonTip(60000, "", "Time to move!", ToolTipIcon.None); // TODO: add string to settings
+                    TrayIcon.ShowBalloonTip(60000, "", "Time to move!", ToolTipIcon.None);
                 }
 
                 //FlashScreen
-                if (Properties.Settings.Default.FlashScreenEnabled)
+                if (Properties.Settings.Default.ActionFlashScreenEnabled)
                 {
                     if (FlashScreen == null || FlashScreen.IsDisposed)
                     {
@@ -115,45 +106,43 @@ namespace Move
         void StopActions()
         {
             //TaskbarIconFlash
-            if (Properties.Settings.Default.FlashIconEnabled)
+            if (Properties.Settings.Default.ActionFlashIconEnabled)
             {
                 TaskbarIconFlashTimer.Stop();
-                TrayIcon.Icon = Properties.Resources.Icon;
             }
 
             //SystemBeep
-            if (Properties.Settings.Default.SystemBeepEnabled)
+            if (Properties.Settings.Default.ActionSystemBeepEnabled)
             {
                 SystemBeepTimer.Stop();
             }
-
-            //MessageBox
-            if (Properties.Settings.Default.MessageBoxEnabled)
-            {
-            }
-
+            
             //BalloonTip
-            if (Properties.Settings.Default.BalloonTipEnabled)
+            if (Properties.Settings.Default.ActionBalloonTipEnabled)
             {
                 // this forces the BalloonTip to close
                 TrayIcon.Visible = true;
             }
 
             //FlashScreen
-            if (Properties.Settings.Default.FlashScreenEnabled)
+            if (Properties.Settings.Default.ActionFlashScreenEnabled)
             {
                 FlashScreen.Close();
             }
 
-            //LockMachine 
-            // - nothing to disable as if this was enabled, 
-            //   the machine would have been locked
+            //LockMachine - nothing to disable as if this was enabled, 
+            // the machine would have been locked
         }
         
         void Action_Accepted(object sender, EventArgs e)
         {
             StopActions();
             StartMoveTimer();
+
+            PauseMenuItem.Enabled = true;
+            PauseMenuItem.Text = Properties.Resources.PauseMenuItem_TextPause;
+
+            TrayIcon.Icon = Properties.Resources.Icon;
         }
 
         private Boolean SwitchIcon = true;
@@ -161,7 +150,7 @@ namespace Move
         {
             if (SwitchIcon)
             {
-                TrayIcon.Icon = Properties.Resources.NoIcon;
+                TrayIcon.Icon = Properties.Resources.IconBlank;
             }
             else
             {
