@@ -11,9 +11,6 @@
     <Setting Name="ActionSystemBeepEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ActionMessageBoxEnabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="ActionBalloonTipEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -24,13 +21,28 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ActionFlashIconSpeed" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">200</Value>
     </Setting>
     <Setting Name="ActionFlashScreenSpeed" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">500</Value>
     </Setting>
-    <Setting Name="ActionFlashScreenTransparency" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">1</Value>
+    <Setting Name="ActionFlashScreenOpacity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="RunOnStartupEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ActionFlashScreenBehaviour" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Random</Value>
+    </Setting>
+    <Setting Name="ActionFlashScreenColourCustom" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="ActionSystemBeepSpeed" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2000</Value>
+    </Setting>
+    <Setting Name="ActionBalloonTipText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Time to move!</Value>
     </Setting>
   </Settings>
 </SettingsFile>

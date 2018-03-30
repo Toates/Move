@@ -62,18 +62,6 @@ namespace Move.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ActionMessageBoxEnabled {
-            get {
-                return ((bool)(this["ActionMessageBoxEnabled"]));
-            }
-            set {
-                this["ActionMessageBoxEnabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ActionBalloonTipEnabled {
             get {
                 return ((bool)(this["ActionBalloonTipEnabled"]));
@@ -109,7 +97,7 @@ namespace Move.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
         public int ActionFlashIconSpeed {
             get {
                 return ((int)(this["ActionFlashIconSpeed"]));
@@ -121,7 +109,7 @@ namespace Move.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
         public int ActionFlashScreenSpeed {
             get {
                 return ((int)(this["ActionFlashScreenSpeed"]));
@@ -133,13 +121,73 @@ namespace Move.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public double ActionFlashScreenTransparency {
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double ActionFlashScreenOpacity {
             get {
-                return ((double)(this["ActionFlashScreenTransparency"]));
+                return ((double)(this["ActionFlashScreenOpacity"]));
             }
             set {
-                this["ActionFlashScreenTransparency"] = value;
+                this["ActionFlashScreenOpacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RunOnStartupEnabled {
+            get {
+                return ((bool)(this["RunOnStartupEnabled"]));
+            }
+            set {
+                this["RunOnStartupEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Random")]
+        public string ActionFlashScreenBehaviour {
+            get {
+                return ((string)(this["ActionFlashScreenBehaviour"]));
+            }
+            set {
+                this["ActionFlashScreenBehaviour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color ActionFlashScreenColourCustom {
+            get {
+                return ((global::System.Drawing.Color)(this["ActionFlashScreenColourCustom"]));
+            }
+            set {
+                this["ActionFlashScreenColourCustom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int ActionSystemBeepSpeed {
+            get {
+                return ((int)(this["ActionSystemBeepSpeed"]));
+            }
+            set {
+                this["ActionSystemBeepSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Time to move!")]
+        public string ActionBalloonTipText {
+            get {
+                return ((string)(this["ActionBalloonTipText"]));
+            }
+            set {
+                this["ActionBalloonTipText"] = value;
             }
         }
     }

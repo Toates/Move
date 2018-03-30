@@ -46,12 +46,12 @@
             this.ClientSize = new System.Drawing.Size(100, 100);
             this.ControlBox = false;
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DataBindings.Add(new System.Windows.Forms.Binding("Opacity", global::Move.Properties.Settings.Default, "dxghfgh", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Opacity", global::Move.Properties.Settings.Default, "ActionFlashScreenOpacity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FlashScreenForm";
-            this.Opacity = global::Move.Properties.Settings.Default.ActionFlashScreenTransparency;
+            this.Opacity = global::Move.Properties.Settings.Default.ActionFlashScreenOpacity;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

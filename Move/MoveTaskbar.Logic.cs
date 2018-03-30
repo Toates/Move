@@ -36,8 +36,11 @@ namespace Move
         void StartMoveTimer()
         {
             MoveTimer.Stop();
+//#if DEBUG
+            MoveTimer.Interval = 10000;
+//#else
             MoveTimer.Interval = (int)TimeSpan.FromMinutes(Properties.Settings.Default.MoveIntervalMinutes).TotalMilliseconds;
-
+//#endif
             MoveTimer.Enabled = true;
             MoveTimer.Start();
 
@@ -74,7 +77,7 @@ namespace Move
                 //SystemBeep
                 if (Properties.Settings.Default.ActionSystemBeepEnabled)
                 {
-                    SystemBeepTimer.Interval = 2000;
+                    SystemBeepTimer.Interval = Properties.Settings.Default.ActionSystemBeepSpeed;
                     SystemBeepTimer.Start();
                 }
                 
@@ -87,7 +90,7 @@ namespace Move
                     // or we do not react to closure, leaving the user to have to double click to stop
                     // based on the two options, stopping on closure is the least worse, just need to make clear in settings and allow disabling
                     // also single click on icon is treated as a click on the balloontip when displayed for some reason
-                    TrayIcon.ShowBalloonTip(60000, "", "Time to move!", ToolTipIcon.None);
+                    TrayIcon.ShowBalloonTip(60000, "", Properties.Settings.Default.ActionBalloonTipText, ToolTipIcon.None);
                 }
 
                 //FlashScreen
@@ -95,10 +98,11 @@ namespace Move
                 {
                     if (FlashScreen == null || FlashScreen.IsDisposed)
                     {
-                        FlashScreen = new FlashScreenForm();
+                        using (FlashScreen = new FlashScreenForm())
+                        {
+                            FlashScreen.ShowDialog();
+                        }
                     }
-
-                    FlashScreen.ShowDialog();
                 }
             }
         }
@@ -145,7 +149,7 @@ namespace Move
             TrayIcon.Icon = Properties.Resources.Icon;
         }
 
-        private Boolean SwitchIcon = true;
+        private bool SwitchIcon = true;
         void TaskbarIconFlashTimer_Tick(object sender, EventArgs e)
         {
             if (SwitchIcon)

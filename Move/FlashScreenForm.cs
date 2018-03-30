@@ -37,7 +37,42 @@ namespace Move
 
         private void FlashScreenFormTimer_Tick(object sender, EventArgs e)
         {
-            BackColor = Color.FromArgb(r.Next(0, 256), r.Next(0, 256), r.Next(0, 256));
+            switch (Properties.Settings.Default.ActionFlashScreenBehaviour)
+            {
+                case "Black & White":
+                    if (BackColor == Color.White)
+                    {
+                        BackColor = Color.Black;
+                    }
+                    else
+                    {
+                        BackColor = Color.White;
+                    }
+                    break;
+
+                case "Custom":
+                    if (BackColor == Properties.Settings.Default.ActionFlashScreenColourCustom)
+                    {
+                        if (BackColor == Color.White)
+                        {
+                            BackColor = Color.Black;
+                        }
+                        else
+                        {
+                            BackColor = Color.White;
+                        }
+                    }
+                    else
+                    {
+                        BackColor = Properties.Settings.Default.ActionFlashScreenColourCustom;
+                    }
+                    break;
+
+                case "Random":
+                default:
+                    BackColor = Color.FromArgb(r.Next(0, 256), r.Next(0, 256), r.Next(0, 256));
+                    break;
+            }
         }
     }
 }
