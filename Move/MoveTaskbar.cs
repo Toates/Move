@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.ComponentModel;
 
 [assembly: CLSCompliant(true)]
 namespace Move
@@ -28,7 +23,7 @@ namespace Move
 
         private void InitializeComponent()
         {
-            // before initialising, attempt to load user configuration
+            // before initialising, load any previous user configuration
             Properties.Settings.Default.Reload();
 
             // taskbar icon
@@ -45,26 +40,22 @@ namespace Move
 
             ResetMenuItem = new ToolStripMenuItem()
             {
-                Text = Properties.Resources.ResetMenuItem_Text,
-                //ToolTipText = Properties.Resources.ResetMenuItem_ToolTipText
+                Text = Properties.Resources.ResetMenuItem_Text
             };
 
             PauseMenuItem = new ToolStripMenuItem()
             {
-                Text = Properties.Resources.PauseMenuItem_TextPause,
-                //ToolTipText = Properties.Resources.PauseMenuItem_ToolTipText
+                Text = Properties.Resources.PauseMenuItem_TextPause
             };
 
             SettingsMenuItem = new ToolStripMenuItem()
             {
-                Text = Properties.Resources.SettingsMenuItem_Text,
-                //ToolTipText = Properties.Resources.SettingsMenuItem_ToolTipText
+                Text = Properties.Resources.SettingsMenuItem_Text
             };
 
             CloseMenuItem = new ToolStripMenuItem()
             {
-                Text = Properties.Resources.CloseMenuItem_Text,
-                //ToolTipText = Properties.Resources.CloseMenuItem_ToolTipText
+                Text = Properties.Resources.CloseMenuItem_Text
             };
 
             TrayIconContextMenu.Items.AddRange(new ToolStripItem[] {
@@ -96,11 +87,6 @@ namespace Move
 
         }
 
-        private void TrayIcon_DoubleClick(object sender, EventArgs e)
-        {
-            Action_Accepted(sender, e);
-        }
-
         private void TrayIcon_MouseMove(object sender, EventArgs e)
         {
             if (PauseMenuItem.Text == Properties.Resources.PauseMenuItem_TextPause)
@@ -110,7 +96,8 @@ namespace Move
                 {
                     TrayIcon.Text =
                         TimeSpan.FromMilliseconds
-                        (MoveTimer.Interval - stopwatch.ElapsedMilliseconds).ToString(@"hh\:mm\:ss", System.Globalization.CultureInfo.CurrentCulture);
+                         (MoveTimer.Interval - stopwatch.ElapsedMilliseconds).ToString
+                          (@"hh\:mm\:ss", System.Globalization.CultureInfo.CurrentCulture);
                 }
                 // otherwise just display nothing
                 else
@@ -122,6 +109,11 @@ namespace Move
             {
                 TrayIcon.Text = "Paused";
             }
+        }
+
+        private void TrayIcon_DoubleClick(object sender, EventArgs e)
+        {
+            Action_Accepted(sender, e);
         }
 
         private void TrayIcon_BalloonTipClicked(object sender, EventArgs e)
@@ -179,7 +171,7 @@ namespace Move
         {
             Properties.Settings.Default.Save();
 
-            // ensure the icon is be removed when the application is closed
+            // ensure the icon is removed when the application is closed
             TrayIcon.Visible = false;
         }
     }

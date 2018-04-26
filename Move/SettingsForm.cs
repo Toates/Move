@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Move
@@ -24,7 +17,6 @@ namespace Move
             FlashIconSpeedIntervalLabel.Text = GetSecondLabelString((double)FlashIconSpeedTrackBar.Value / 1000);
             FlashScreenSpeedIntervalLabel.Text = GetSecondLabelString((double)FlashScreenSpeedTrackBar.Value / 1000);
             SystemBeepSpeedIntervalLabel.Text = GetSecondLabelString((double)SystemBeepSpeedTrackBar.Value / 1000);
-
             FlashScreenOpacityValueLabel.Text = GetPercentageLabelString(FlashScreenOpacityTrackBar.Value);
             
             if ((string)FlashScreenBehaviourComboBox.SelectedItem == "Custom")

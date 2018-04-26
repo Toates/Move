@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Move
@@ -36,11 +32,7 @@ namespace Move
         void StartMoveTimer()
         {
             MoveTimer.Stop();
-//#if DEBUG
-            MoveTimer.Interval = 10000;
-//#else
             MoveTimer.Interval = (int)TimeSpan.FromMinutes(Properties.Settings.Default.MoveIntervalMinutes).TotalMilliseconds;
-//#endif
             MoveTimer.Enabled = true;
             MoveTimer.Start();
 
@@ -65,6 +57,7 @@ namespace Move
                 MachineLocked = NativeMethods.LockWorkStation();
             }
 
+            // if the machine has been locked, no point triggering any other actions
             if (!MachineLocked)
             {
                 //TaskbarIconFlash
@@ -88,7 +81,7 @@ namespace Move
                     // balloontipclosed is triggered on both user and system closures with no way of differentiating 
                     // so either we stop actions on all closures, limiting its effectiveness
                     // or we do not react to closure, leaving the user to have to double click to stop
-                    // based on the two options, stopping on closure is the least worse, just need to make clear in settings and allow disabling
+                    // stopping on closure is the least worse, just need to make clear in settings and allow disabling
                     // also single click on icon is treated as a click on the balloontip when displayed for some reason
                     TrayIcon.ShowBalloonTip(60000, "", Properties.Settings.Default.ActionBalloonTipText, ToolTipIcon.None);
                 }
